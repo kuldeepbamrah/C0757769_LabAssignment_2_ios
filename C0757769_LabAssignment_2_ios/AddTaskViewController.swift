@@ -21,7 +21,7 @@ class AddTaskViewController: UIViewController {
         
         
         //deleteData()
-       loadCoreData()
+        loadFromCoreData()
         print(taskArray.count)
     
         
@@ -94,7 +94,7 @@ class AddTaskViewController: UIViewController {
         
     }
     
-    func loadCoreData()
+    func loadFromCoreData()
       {
           
         if taskArray.count != 0
@@ -128,13 +128,10 @@ class AddTaskViewController: UIViewController {
           } catch{
               print(error)
           }
-                        
+                
           
       }
     
-    
-    
-
     /*
     // MARK: - Navigation
 
