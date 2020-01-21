@@ -172,6 +172,19 @@ class NotesTableViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+              let newVC = sb.instantiateViewController(identifier: "editTask") as! EditTaskViewController
+            newVC.task = self.taskArray[indexPath.row]
+         
+       
+            
+        
+              
+              navigationController?.pushViewController(newVC, animated: true)
+    }
+    
     func loadFromCoreData()
     {
         
