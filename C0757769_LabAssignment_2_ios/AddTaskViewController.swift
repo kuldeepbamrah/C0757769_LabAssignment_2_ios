@@ -9,7 +9,7 @@
 import UIKit
  import CoreData
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var numberOfDaysLabel: UITextField!
@@ -18,18 +18,25 @@ class AddTaskViewController: UIViewController {
     var taskArray : [Task] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        descTextField.delegate = self
+        descTextField.text = "Enter Description"
+        descTextField.textColor = UIColor.lightGray
         
         //deleteData()
         loadFromCoreData()
         print(taskArray.count)
-    
-        
-       
-
-        // Do any additional setup after loading the view.
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+
+        if descTextField.textColor == UIColor.lightGray {
+            descTextField.text = ""
+            descTextField.textColor = UIColor.black
+        }
+    }
+    
+    
+
     @IBAction func saveBtn(_ sender: Any)
     {
         let title = titleLabel.text
