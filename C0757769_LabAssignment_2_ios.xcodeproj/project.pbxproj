@@ -18,6 +18,7 @@
 		9B96BD7723D770FB000E9232 /* C0757769_LabAssignment_2_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96BD7623D770FB000E9232 /* C0757769_LabAssignment_2_iosUITests.swift */; };
 		9B96BD8523D7716A000E9232 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96BD8423D7716A000E9232 /* NotesTableViewController.swift */; };
 		9B96BD8723D773C0000E9232 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96BD8623D773C0000E9232 /* AddTaskViewController.swift */; };
+		9B96BD8923D77B48000E9232 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96BD8823D77B48000E9232 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		9B96BD7823D770FB000E9232 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B96BD8423D7716A000E9232 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		9B96BD8623D773C0000E9232 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		9B96BD8823D77B48000E9232 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				9B96BD5F23D770FB000E9232 /* LaunchScreen.storyboard */,
 				9B96BD6223D770FB000E9232 /* Info.plist */,
 				9B96BD5A23D770FA000E9232 /* C0757769_LabAssignment_2_ios.xcdatamodeld */,
+				9B96BD8823D77B48000E9232 /* Task.swift */,
 			);
 			path = C0757769_LabAssignment_2_ios;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				9B96BD5223D770FA000E9232 /* AppDelegate.swift in Sources */,
 				9B96BD5423D770FA000E9232 /* SceneDelegate.swift in Sources */,
 				9B96BD5C23D770FA000E9232 /* C0757769_LabAssignment_2_ios.xcdatamodeld in Sources */,
+				9B96BD8923D77B48000E9232 /* Task.swift in Sources */,
 				9B96BD8523D7716A000E9232 /* NotesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
