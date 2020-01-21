@@ -52,14 +52,17 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
     
     func saveToCoreData()
     {
+        //deleteData()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let newTask = NSEntityDescription.insertNewObject(forEntityName: "Tasks", into: context)
-        
-        newTask.setValue(titleLabel.text, forKey: "title")
-        newTask.setValue(Int16(numberOfDaysLabel.text!), forKey: "noOfDays")
-        newTask.setValue(descTextField.text, forKey: "desc")
-        newTask.setValue(Date().dateformatter(), forKey: "date")
+        for i in taskArray
+        {
+            newTask.setValue(i.title, forKey: "title")
+            newTask.setValue(Int16(i.noOfDays), forKey: "noOfDays")
+            newTask.setValue(i.description, forKey: "desc")
+            newTask.setValue(i.dateString, forKey: "date")
         
         
         do
@@ -70,6 +73,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
                    {
                        print(error)
                    }
+        }
         
     }
     
@@ -104,11 +108,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
     
     func loadFromCoreData()
       {
-          
-        if taskArray.count != 0
-        {
-            deleteData()
-        }
+        
 
           let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 

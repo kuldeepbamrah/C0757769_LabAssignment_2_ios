@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Notes Table View Controller-->
+        <!--Tasks-->
         <scene sceneID="cl3-D1-2M7">
             <objects>
                 <tableViewController id="G5E-73-Yev" customClass="NotesTableViewController" customModule="C0757769_LabAssignment_2_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,49 +16,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="90" id="Baf-Nc-jtw" customClass="TaskTableViewCell" customModule="C0757769_LabAssignment_2_ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="100" id="Baf-Nc-jtw" customClass="TaskTableViewCell" customModule="C0757769_LabAssignment_2_ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Baf-Nc-jtw" id="Akv-8h-sK8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bb-5T-V1Y">
-                                            <rect key="frame" x="20" y="11" width="55" height="27"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Label">
-                                                    <attributes>
-                                                        <font key="NSFont" size="24" name=".SFNS-Regular"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-jk-JiU">
-                                            <rect key="frame" x="366.5" y="11" width="27.5" height="21"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="Label">
-                                                    <attributes>
-                                                        <font key="NSFont" size="12" name=".SFNS-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agB-BU-hDr">
-                                            <rect key="frame" x="20" y="46" width="165" height="33"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agB-BU-hDr">
+                                            <rect key="frame" x="20" y="46" width="172" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
                                                         <font key="NSFont" metaFont="menu" size="14"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOU-ox-J1D">
+                                            <rect key="frame" x="20" y="71" width="46" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Status:">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-Ph-vbz">
+                                            <rect key="frame" x="74" y="71" width="118" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="label">
+                                                    <attributes>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5w1-iD-rD3">
-                                            <rect key="frame" x="305" y="55" width="56" height="15"/>
+                                            <rect key="frame" x="319" y="6" width="75" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Days Left:">
@@ -69,32 +74,46 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lw-2C-fxw">
-                                            <rect key="frame" x="366" y="52" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lw-2C-fxw">
+                                            <rect key="frame" x="328" y="27" width="56" height="62"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bb-5T-V1Y">
+                                            <rect key="frame" x="20" y="21" width="172" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name=".SFNS-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqg-jk-JiU">
+                                            <rect key="frame" x="20" y="6" width="172" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <font key="NSFont" size="12" name=".SFNS-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dqg-jk-JiU" secondAttribute="bottom" constant="47" id="3xx-4e-Nii"/>
-                                        <constraint firstItem="agB-BU-hDr" firstAttribute="leading" secondItem="Akv-8h-sK8" secondAttribute="leadingMargin" id="BJX-XH-e3f"/>
-                                        <constraint firstItem="0Bb-5T-V1Y" firstAttribute="top" secondItem="Akv-8h-sK8" secondAttribute="topMargin" id="DuI-ao-E1s"/>
-                                        <constraint firstItem="agB-BU-hDr" firstAttribute="bottom" secondItem="Akv-8h-sK8" secondAttribute="bottomMargin" id="HcQ-Iu-ex8"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="0Bb-5T-V1Y" secondAttribute="bottom" constant="41" id="Zay-gS-WOH"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="agB-BU-hDr" secondAttribute="trailing" constant="209" id="ntA-pN-lG3"/>
-                                        <constraint firstItem="dqg-jk-JiU" firstAttribute="trailing" secondItem="Akv-8h-sK8" secondAttribute="trailingMargin" id="rWg-Os-VM7"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="0Bb-5T-V1Y" secondAttribute="trailing" constant="319" id="uWo-bQ-xk5"/>
-                                        <constraint firstItem="0Bb-5T-V1Y" firstAttribute="leading" secondItem="Akv-8h-sK8" secondAttribute="leadingMargin" id="uzL-DI-2ZG"/>
-                                        <constraint firstItem="agB-BU-hDr" firstAttribute="top" secondItem="0Bb-5T-V1Y" secondAttribute="bottom" constant="8" id="ykx-K5-vPt"/>
-                                        <constraint firstItem="dqg-jk-JiU" firstAttribute="top" secondItem="Akv-8h-sK8" secondAttribute="topMargin" id="zug-TC-49E"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="dqg-jk-JiU" id="B0g-P3-wDl"/>
                                     <outlet property="daysLeft" destination="0lw-2C-fxw" id="iK9-DL-syO"/>
                                     <outlet property="descLabel" destination="agB-BU-hDr" id="zj7-Xz-Lh7"/>
+                                    <outlet property="statusLabel" destination="Fa9-Ph-vbz" id="Sel-RA-3ec"/>
                                     <outlet property="titleLabel" destination="0Bb-5T-V1Y" id="gS5-0n-fWV"/>
                                 </connections>
                             </tableViewCell>
@@ -104,7 +123,7 @@
                             <outlet property="delegate" destination="G5E-73-Yev" id="tLf-Ai-nFy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vNF-pK-V5K">
+                    <navigationItem key="navigationItem" title="Tasks" id="vNF-pK-V5K">
                         <barButtonItem key="rightBarButtonItem" title="Add Task" id="RlY-rs-5Ti">
                             <connections>
                                 <segue destination="z9O-jd-GuN" kind="show" id="G6R-dS-WXR"/>
@@ -115,6 +134,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3t-IU-2wK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1734.7826086956522" y="138.61607142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Wx9-Ox-tfd">
+            <objects>
+                <viewController id="D01-Tb-wyJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iOG-1S-UXG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zEt-Ys-5En"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fA-Vb-RbO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="779"/>
         </scene>
         <!--Add New Task-->
         <scene sceneID="1s2-5H-7he">

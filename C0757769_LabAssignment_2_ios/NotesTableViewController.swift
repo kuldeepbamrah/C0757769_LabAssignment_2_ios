@@ -15,6 +15,7 @@ class NotesTableViewController: UITableViewController {
     var taskArray = [Task]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //deleteData()
         loadFromCoreData()
         
 
@@ -22,7 +23,7 @@ class NotesTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
    
     
@@ -39,54 +40,39 @@ class NotesTableViewController: UITableViewController {
                handler: { (action, view, completion) in
                 
                 let   appdelegate = UIApplication.shared.delegate as! AppDelegate;
-                                                      
-                                            let context = appdelegate.persistentContainer.viewContext
-                                            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+                let context = appdelegate.persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
                                
-                                
-                                do
-                                {
-                                    let x = try context.fetch(fetchRequest)
-                                    let result = x as! [Tasks]
-                                   print(result.count)
-                                    
-                                let resultcurr = result[indexPath.row]
-                                    
-                                        
-                                     let days = resultcurr.value(forKey: "noOfDays") as! Int16
-                                    
-                                    resultcurr.setValue(days-1, forKey: "noOfDays")
-                                                           
-                       
-                                    print(indexPath.row )
-                                    do
-                                    {
-                                       try context.save()
-                                    }
-                                    catch{
-                                        
-                                        //Something shit has already happened.
-                                    }
-                                    let newtask = self.taskArray[indexPath.row]
-                                    newtask.noOfDays -= 1
-                                    
-                                                           
-                                    
-                                            
-                                    tableView.reloadData()
-                                    
-                                }
-                                catch
-                                {
-                                    
-                                }
-                
-                
-                                completion(true)
+                do
+                {
+                    let x = try context.fetch(fetchRequest)
+                    let result = x as! [Tasks]
+                    let resultcurr = result[indexPath.row]
+                    let days = resultcurr.value(forKey: "noOfDays") as! Int16
+                    if days <= 0
+                    {
+                        print("isdfi")
+                    }else
+                    {resultcurr.setValue(days-1, forKey: "noOfDays")
+                do
+                {
+                    try context.save()
+                }
+                catch{
+                        print(error)
+                    }
+                    let currtask = self.taskArray[indexPath.row]
+                    currtask.noOfDays -= 1
+                    tableView.reloadData()
+                }
+                    }
+                catch
+                {
+                    print(error)
+                }
+                completion(true)
            })
-
-        
-           action.backgroundColor = .blue
+        action.backgroundColor = .blue
         
         
         
@@ -94,41 +80,34 @@ class NotesTableViewController: UITableViewController {
         
         let action1 = UIContextualAction(
                style: .normal,
-               title: "Delete Task",
+               title: "Delete",
                handler: { (action, view, completion) in
 
                 let   appdelegate = UIApplication.shared.delegate as! AppDelegate;
-                                       
-                             let context = appdelegate.persistentContainer.viewContext
-                             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+                let context = appdelegate.persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
                 
-                 
-                 do
+                do
                  {
-                     let x = try context.fetch(fetchRequest)
-                     let result = x as! [Tasks]
-                    print(result.count)
-                     
-                     print("deleting \(result[indexPath.row])")
+                     let fetchedRequest = try context.fetch(fetchRequest)
+                     let result = fetchedRequest as! [Tasks]
                      context.delete(result[indexPath.row])
-                     //print(zotes)
-                     print(indexPath.row )
                      do
                      {
                         try context.save()
                      }
-                     catch{
-                         
-                         //Something shit has already happened.
+                     catch
+                     {
+                         print(error)
                      }
                     self.taskArray.remove(at: indexPath.row)
-                     tableView.deleteRows(at: [indexPath], with: .fade)
-                     tableView.reloadData()
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.reloadData()
                      
                  }
                  catch
                  {
-                     
+                     print(error)
                  }
                 
                 completion(true)
@@ -145,7 +124,9 @@ class NotesTableViewController: UITableViewController {
     
    override func viewWillAppear(_ animated: Bool) {
 
+        taskArray.removeAll()
         loadFromCoreData()
+    print(taskArray.count)
        tableView.reloadData()
     }
 
@@ -165,11 +146,20 @@ class NotesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskTableViewCell
-        
+        cell.descLabel.textColor = UIColor.gray
+        cell.dateLabel.textColor = UIColor.gray
         cell.titleLabel.text = taskArray[indexPath.row].title
         cell.descLabel.text = taskArray[indexPath.row].description
         cell.dateLabel.text = taskArray[indexPath.row].dateString
         cell.daysLeft.text = "\(taskArray[indexPath.row].noOfDays)"
+        
+        if taskArray[indexPath.row].noOfDays == 0
+        {
+            cell.statusLabel.text = "Completed"
+        }else
+        {
+            cell.statusLabel.text = "Incomplete"
+        }
         
 
         return cell
@@ -182,24 +172,9 @@ class NotesTableViewController: UITableViewController {
     }
     
     
-    
-    	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func loadFromCoreData()
     {
+        
     
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
               

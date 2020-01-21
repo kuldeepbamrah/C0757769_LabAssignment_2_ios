@@ -26,7 +26,7 @@ class Task
         self.noOfDays = noOfDays
         self.date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "dd/MM/yyyy"
         self.dateString = formatter.string(from: date)
         
     }
