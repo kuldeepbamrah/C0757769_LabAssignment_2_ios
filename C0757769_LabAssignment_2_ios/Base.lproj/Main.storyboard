@@ -129,7 +129,11 @@
                         <viewLayoutGuide key="safeArea" id="3eA-Q8-ByE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Task" id="KUY-as-nDf">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="1qk-XN-1Mg"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="1qk-XN-1Mg">
+                            <connections>
+                                <action selector="saveBtn:" destination="z9O-jd-GuN" id="iM3-tg-O3y"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descTextField" destination="BRI-PE-WGp" id="YAv-qF-Inc"/>

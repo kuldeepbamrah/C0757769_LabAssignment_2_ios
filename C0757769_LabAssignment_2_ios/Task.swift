@@ -11,7 +11,7 @@ import Foundation
 class Task
 {
     
-    var title : String = ""
+    var title : String
     var description : String
     var noOfDays : Int
     //var currDate : Int64
@@ -19,7 +19,7 @@ class Task
     var dateString : String
     
     
-    init(title: String,description: String,noOfDays : Int, datae : Date  )
+    internal init(title: String,description: String,noOfDays : Int, datae : Date  )
     {
         self.title = title
         self.description = description
@@ -31,6 +31,17 @@ class Task
         
     }
     
+    internal init()
+    {
+        self.title = String()
+        self.description = String()
+        self.noOfDays = Int()
+        //var currDate : Int64
+        self.date =  Date()
+        self.dateString = String()
+        
+    }
+    
     
     
 }
@@ -39,7 +50,7 @@ extension Date
     
     func dateformatter() -> String {
         let dateFormatterPrint=DateFormatter()
-        dateFormatterPrint.dateFormat="EEEE, dd MMMM, yyyy"
+        dateFormatterPrint.dateFormat="dd/MM/yyyy"
         let formattedDate = dateFormatterPrint.string(from: self)
         return formattedDate
         
