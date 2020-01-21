@@ -24,6 +24,124 @@ class NotesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+   
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+       override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // first action for adding day
+         let action = UIContextualAction(
+               style: .normal,
+               title: "Add Day",
+               handler: { (action, view, completion) in
+                
+                let   appdelegate = UIApplication.shared.delegate as! AppDelegate;
+                                                      
+                                            let context = appdelegate.persistentContainer.viewContext
+                                            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+                               
+                                
+                                do
+                                {
+                                    let x = try context.fetch(fetchRequest)
+                                    let result = x as! [Tasks]
+                                   print(result.count)
+                                    
+                                let resultcurr = result[indexPath.row]
+                                    
+                                        
+                                     let days = resultcurr.value(forKey: "noOfDays") as! Int16
+                                    
+                                    resultcurr.setValue(days-1, forKey: "noOfDays")
+                                                           
+                       
+                                    print(indexPath.row )
+                                    do
+                                    {
+                                       try context.save()
+                                    }
+                                    catch{
+                                        
+                                        //Something shit has already happened.
+                                    }
+                                    let newtask = self.taskArray[indexPath.row]
+                                    newtask.noOfDays -= 1
+                                    
+                                                           
+                                    
+                                            
+                                    tableView.reloadData()
+                                    
+                                }
+                                catch
+                                {
+                                    
+                                }
+                
+                
+                                completion(true)
+           })
+
+        
+           action.backgroundColor = .blue
+        
+        
+        
+        // second action for delete
+        
+        let action1 = UIContextualAction(
+               style: .normal,
+               title: "Delete Task",
+               handler: { (action, view, completion) in
+
+                let   appdelegate = UIApplication.shared.delegate as! AppDelegate;
+                                       
+                             let context = appdelegate.persistentContainer.viewContext
+                             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Tasks")
+                
+                 
+                 do
+                 {
+                     let x = try context.fetch(fetchRequest)
+                     let result = x as! [Tasks]
+                    print(result.count)
+                     
+                     print("deleting \(result[indexPath.row])")
+                     context.delete(result[indexPath.row])
+                     //print(zotes)
+                     print(indexPath.row )
+                     do
+                     {
+                        try context.save()
+                     }
+                     catch{
+                         
+                         //Something shit has already happened.
+                     }
+                    self.taskArray.remove(at: indexPath.row)
+                     tableView.deleteRows(at: [indexPath], with: .fade)
+                     tableView.reloadData()
+                     
+                 }
+                 catch
+                 {
+                     
+                 }
+                
+                completion(true)
+           })
+
+        
+           action1.backgroundColor = .red
+        
+        
+           let configuration = UISwipeActionsConfiguration(actions: [action1, action])
+           configuration.performsFirstActionWithFullSwipe = false
+           return configuration
+    }
     
    override func viewWillAppear(_ animated: Bool) {
 
@@ -51,6 +169,7 @@ class NotesTableViewController: UITableViewController {
         cell.titleLabel.text = taskArray[indexPath.row].title
         cell.descLabel.text = taskArray[indexPath.row].description
         cell.dateLabel.text = taskArray[indexPath.row].dateString
+        cell.daysLeft.text = "\(taskArray[indexPath.row].noOfDays)"
         
 
         return cell

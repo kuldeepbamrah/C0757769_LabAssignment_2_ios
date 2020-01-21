@@ -27,6 +27,7 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         print(taskArray.count)
     }
     
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
 
         if descTextField.textColor == UIColor.lightGray {
