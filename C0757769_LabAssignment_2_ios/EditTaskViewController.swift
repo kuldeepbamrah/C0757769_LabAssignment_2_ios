@@ -35,14 +35,45 @@ class EditTaskViewController: UIViewController {
         let desc = descLabel.text ?? ""
         let days = Int16(noOfDays.text ?? "0") ?? 0
         
-        let task = Task(title: title, description: desc, noOfDays: Int(days), datae: Date())
         
-        self.deleteSelectedTask()
-        self.taskArray.removeAll()
-        loadFromCoreData()
-        taskArray.append(task)
-        print(taskArray.count)
-        saveToCoreData()
+        
+        if (title == "" || noOfDays.text ==  "" || desc == "")
+        {
+        let alert = UIAlertController(title: "Error", message: "Please enter all the details", preferredStyle: .actionSheet)
+            
+             alert.addAction(UIAlertAction(title: "Ok", style: .default , handler:{ (UIAlertAction)in
+               }))
+        
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+        }else
+        {
+            
+        let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to submit?", preferredStyle: .actionSheet)
+        
+         alert.addAction(UIAlertAction(title: "Yes", style: .default , handler:{ (UIAlertAction)in
+            let task = Task(title: title, description: desc, noOfDays: Int(days), datae: Date())
+            
+            self.deleteSelectedTask()
+            self.taskArray.removeAll()
+            self.loadFromCoreData()
+            self.taskArray.append(task)
+            print(self.taskArray.count)
+            self.saveToCoreData()
+            
+            self.navigationController?.popViewController(animated: true)
+            
+           }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive , handler:{ (UIAlertAction)in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        }
+        
+        
         
     }
     

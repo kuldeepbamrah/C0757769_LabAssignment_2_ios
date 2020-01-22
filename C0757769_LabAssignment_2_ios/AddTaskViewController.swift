@@ -44,10 +44,38 @@ class AddTaskViewController: UIViewController, UITextViewDelegate {
         let days =  Int(numberOfDaysLabel.text!)
         let desc = descTextField.text
         
-       let task = Task(title: title!, description: desc!, noOfDays: days!, datae: Date())
-        self.taskArray.append(task)
-        print(task.dateString)
-        saveToCoreData()
+        
+        if (title == "" || numberOfDaysLabel.text == "" || desc == "")
+        {
+            let alert = UIAlertController(title: "Error", message: "Please enter all the details", preferredStyle: .actionSheet)
+            
+             alert.addAction(UIAlertAction(title: "Ok", style: .default , handler:{ (UIAlertAction)in
+               }))
+        
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+        }
+       
+        else{
+        let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to submit?", preferredStyle: .actionSheet)
+        
+         alert.addAction(UIAlertAction(title: "Yes", style: .default , handler:{ (UIAlertAction)in
+            
+            let task = Task(title: title!, description: desc!, noOfDays: days!, datae: Date())
+            self.taskArray.append(task)
+            print(task.dateString)
+            self.saveToCoreData()
+            self.navigationController?.popViewController(animated: true)
+           }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive , handler:{ (UIAlertAction)in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        }
+        
     }
     
     func saveToCoreData()
